@@ -1,4 +1,4 @@
-#Employee Tracker
+Employee Tracker
 
 A solution for managing a company's employees using node, inquirer, and MySQL
 * The command-line application allows users to:
@@ -9,6 +9,6 @@ A solution for managing a company's employees using node, inquirer, and MySQL
   * View employees by manager
   * Delete departments, roles, employees
 
-#Visual
+Visual
 
 ![visualexample.JPG](visualexample.JPG)
