@@ -15,11 +15,12 @@ connection.connect(function(err){
     startApp();
 });
 
+
 function startApp() {
     inquirer
     .prompt({
         type: "list",
-        message: "Welcome to our employee database tracker! What would you like to do?",
+        message: "What would you like to do?",
         name: "action",
         choices: [
                 "View all employees",
@@ -63,7 +64,9 @@ function startApp() {
 function viewEmploys() {
     var query = "SELECT * FROM employee";
     connection.query(query, function(err, res) {
-    if (err) throw err; 
+    if (err) throw err;
+    console.log(res.length + " employees found!");
+    console.table('All Employees:', res); 
     startApp();
     });
 }
@@ -73,6 +76,7 @@ function viewDepts() {
     var query = "SELECT * FROM department";
     connection.query(query, function(err, res) {
     if(err)throw err;
+    console.table('All Departments:', res);
     startApp();
     });
 }
@@ -133,6 +137,7 @@ function addEmploy() {
                 },
                 function (err) {
                     if (err) throw err;
+                    console.log("Your employee has been added!");
                     startApp();
                 }
                 )
@@ -159,6 +164,7 @@ function addDept() {
           var query = "SELECT * FROM department";
         connection.query(query, function(err, res) {
         if(err)throw err;
+        console.table('All Departments:', res);
         startApp();
         });
     });
@@ -210,7 +216,8 @@ function addRole() {
                 department_id: deptID
             },
             function (err, res) {
-                if(err)throw err;  
+                if(err)throw err;
+                console.log("Your new role has been added!");
                 startApp();
             }
         )
